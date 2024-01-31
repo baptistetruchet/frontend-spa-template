@@ -5,7 +5,7 @@ import {
   userEvent,
   renderRouter,
   fireEvent,
-} from "@/test/utils";
+} from "@tests/utils";
 
 describe("auth", () => {
   it("redirects to login page when not logged in", async () => {

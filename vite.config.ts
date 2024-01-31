@@ -9,12 +9,14 @@ export default defineConfig(({ mode }) => ({
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
+      "@mocks": path.resolve(__dirname, "./__mocks__"),
+      "@tests": path.resolve(__dirname, "./__tests__"),
     },
   },
   plugins: [react(), mode === "development" ? TanStackRouterVite() : null],
   test: {
     globals: true,
     environment: "jsdom",
-    setupFiles: "./src/test/setup.ts",
+    setupFiles: "./__tests__/setup.ts",
   },
 }));

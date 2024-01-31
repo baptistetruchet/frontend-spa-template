@@ -1,5 +1,5 @@
 import { expect, describe, it } from "vitest";
-import { screen, waitFor, userEvent, renderRouter, render } from "@/test/utils";
+import { screen, waitFor, userEvent, renderRouter, render } from "@tests/utils";
 import { App } from "@/app";
 
 describe("app", () => {
