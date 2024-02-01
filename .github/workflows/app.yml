@@ -8,12 +8,11 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      - name: Setup node
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: 18
+      - run: yarn install
       - name: Verify routeTree integrity
         run: |
           yarn tsr generate
@@ -22,7 +21,5 @@ jobs:
             git --no-pager diff
             exit 1
           fi
-      - name: Run linter
-        run: yarn lint
-      - name: Run tests
-        run: yarn test
+      - run: yarn lint
+      - run: yarn test
