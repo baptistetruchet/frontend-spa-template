@@ -1,0 +1,28 @@
+name: CI/CD
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+      - name: Verify routeTree integrity
+        run: |
+          yarn tsr generate
+          if [ ! -z "$(git status --porcelain)" ]; then
+            git status --porcelain
+            git --no-pager diff
+            exit 1
+          fi
+      - name: Run linter
+        run: yarn lint
+      - name: Run tests
+        run: yarn test
