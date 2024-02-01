@@ -11,7 +11,9 @@
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:coverage": "vitest run --coverage"
+    "test:coverage": "vitest run --coverage",
+    "tsc:check": "tsc --noEmit",
+    "tsr:check": "yarn tsr generate && git diff --quiet HEAD"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.17.19",
