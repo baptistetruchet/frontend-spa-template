@@ -10,6 +10,7 @@ import {
 import { fetchProfileQueryOptions } from "@/api/resources/profile";
 import { useQuery } from "@tanstack/react-query";
 import { queryClient } from "@/lib/react-query/query-client";
+import { Button } from "antd";
 
 export const Route = createFileRoute("/_auth")({
   beforeLoad: ({ context, location }) => {
@@ -67,9 +68,7 @@ function AuthLayout() {
               ? profileQuery.data.email
               : "loading profile..."}
           </span>
-          <button className="hover:underline" onClick={logout}>
-            logout
-          </button>
+          <Button onClick={logout}>logout</Button>
         </div>
       </div>
       <Outlet />

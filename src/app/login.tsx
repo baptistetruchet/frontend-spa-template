@@ -2,6 +2,7 @@ import { useLayoutEffect } from "react";
 import { login, useAuthToken } from "@/hooks/useAuthToken";
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { z } from "zod";
+import { Button } from "antd";
 
 export const Route = createFileRoute("/login")({
   validateSearch: z.object({
@@ -39,12 +40,9 @@ function Login() {
           id="accessToken"
           className="mb-2 block border"
         />
-        <button
-          type="submit"
-          className="rounded-sm bg-gray-100 px-4 py-2 hover:bg-gray-200"
-        >
+        <Button type="primary" htmlType="submit">
           submit
-        </button>
+        </Button>
       </form>
     </>
   );
