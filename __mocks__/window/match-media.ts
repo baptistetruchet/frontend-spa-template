@@ -1,10 +1,10 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { vi } from "vitest";
 
 Object.defineProperty(window, "matchMedia", {
   writable: true,
   value: vi.fn().mockImplementation((query) => ({
     matches: false,
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     media: query,
     onchange: null,
     addListener: vi.fn(),
