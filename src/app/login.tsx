@@ -3,7 +3,7 @@ import { login, useAuthToken } from "@/hooks/useAuthToken";
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { z } from "zod";
 import { Button, Form, Input } from "antd";
-import { NTitle } from "@/components/primitives/NTitle";
+import { Title } from "@/components/primitives/Title";
 
 export const Route = createFileRoute("/login")({
   validateSearch: z.object({
@@ -28,7 +28,7 @@ function Login() {
 
   return (
     <>
-      <NTitle>Login</NTitle>
+      <Title>Login</Title>
       <Form layout="vertical" className="max-w-80" onFinish={onSubmit}>
         <Form.Item
           label="Access Token"

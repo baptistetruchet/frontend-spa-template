@@ -1,4 +1,4 @@
-import { NTitle } from "@/components/primitives/NTitle";
+import { Title } from "@/components/primitives/Title";
 import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/_auth/about")({
@@ -6,5 +6,5 @@ export const Route = createFileRoute("/_auth/about")({
 });
 
 function About() {
-  return <NTitle>About</NTitle>;
+  return <Title>About</Title>;
 }

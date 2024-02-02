@@ -1,4 +1,4 @@
-import { NTitle } from "@/components/primitives/NTitle";
+import { Title } from "@/components/primitives/Title";
 import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/_auth/")({
@@ -6,5 +6,5 @@ export const Route = createFileRoute("/_auth/")({
 });
 
 function Home() {
-  return <NTitle>Home</NTitle>;
+  return <Title>Home</Title>;
 }
