@@ -2,7 +2,8 @@ import { useLayoutEffect } from "react";
 import { login, useAuthToken } from "@/hooks/useAuthToken";
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { z } from "zod";
-import { Button } from "antd";
+import { Button, Form, Input } from "antd";
+import { NTitle } from "@/components/primitives/NTitle";
 
 export const Route = createFileRoute("/login")({
   validateSearch: z.object({
@@ -16,11 +17,8 @@ function Login() {
   const navigate = useNavigate();
   const search = Route.useSearch();
 
-  function onSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    const data = new FormData(event.target as HTMLFormElement);
-    const accessToken = data.get("accessToken");
-    if (accessToken) login(accessToken as string);
+  function onSubmit({ accessToken }: { accessToken: string }) {
+    login(accessToken);
   }
 
   useLayoutEffect(() => {
@@ -30,20 +28,21 @@ function Login() {
 
   return (
     <>
-      <h1 className="mb-2 text-3xl">Login</h1>
-      <form onSubmit={onSubmit}>
-        <label htmlFor="accessToken" className="block">
-          Access Token
-        </label>
-        <input
-          name="accessToken"
-          id="accessToken"
-          className="mb-2 block border"
-        />
-        <Button type="primary" htmlType="submit">
-          submit
-        </Button>
-      </form>
+      <NTitle>Login</NTitle>
+      <Form layout="vertical" className="max-w-80" onFinish={onSubmit}>
+        <Form.Item
+          label="Access Token"
+          name={["accessToken"]}
+          rules={[{ required: true }]}
+        >
+          <Input />
+        </Form.Item>
+        <Form.Item>
+          <Button type="primary" htmlType="submit" className="w-full">
+            Submit
+          </Button>
+        </Form.Item>
+      </Form>
     </>
   );
 }
